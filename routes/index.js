@@ -6,4 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Pimp Me UP - Facebook App' });
 });
 
+router.post('/', function(req, res, next) {
+  res.render('index', { title: 'Pimp Me UP - Facebook App' });
+});
+
+
 module.exports = router;
