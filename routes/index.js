@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Pimp Me UP - Facebook App' });
+  res.render('index', { title: 'Pimp Me UP - Facebook App 1' });
 });
 
 router.post('/', function(req, res, next) {
