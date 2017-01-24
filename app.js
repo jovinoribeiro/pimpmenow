@@ -1,4 +1,7 @@
 var express = require('express');
+
+var Facebook = require('facebook-node-sdk');
+
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -55,6 +58,10 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+
+app.use(Facebook.middleware({ appID: '1233069123443297', secret : 'bc26345238acf7303ae7a2b575a3e87f'  }));
+
 
 
 module.exports = app;
