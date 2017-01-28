@@ -2,12 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 var Facebook = require('facebook-node-sdk');
-var facebook = new Facebook({ appID: '1233069123443297', secret : 'bc26345238acf7303ae7a2b575a3e87f' });
-
-
+var facebook = new Facebook({ appId: '1233069123443297', secret : 'bc26345238acf7303ae7a2b575a3e87f' });
+     
+  
+   
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Pimp Me UP - Facebook App 5' });
+});
+
+router.get('/test', function(req, res, next) {
+  res.render('index', { title: 'Pimp Me UP - Facebook App 5.1' });
 });
 
 router.post('/', function(req, res, next) {
