@@ -72,7 +72,8 @@ graph.extendAccessToken({
 
 graph.setAccessToken('EAARheEcWGmEBAOuEIwkrPW5fJKchyWzZCy6IQRDlFDUkc9jZC0VWNMpDoZCxnEME8YOaF84TRuHfthfrq3WSba9WIRZCJIlCVnSBdZCwqRsGPxWnOf7ZAaObrvUxvVhfRE0pgLl9W1J1JS6Tt8Ugh42u5LWHYcH1FWxMeZC6gwT5QZDZD');
 
-router.get('/', function(req, res, next) {
+/*router.get('/', function(req, res, next) {*/
+router.post('/', function(req, res, next) {    
   
     console.log('starting facebook page');   
 
