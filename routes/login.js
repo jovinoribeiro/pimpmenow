@@ -6,7 +6,8 @@ var conf = {
 	client_id: '1233069123443297'
 	, client_secret: 'bc26345238acf7303ae7a2b575a3e87f'
 	, scope: 'email, user_about_me, user_work_history, user_birthday, user_location, publish_actions'
-	, redirect_uri: 'http://localhost:3000/login/auth'
+	/*, redirect_uri: 'http://localhost:3000/login/auth'*/
+  , redirect_uri: 'https://pimpmenow.herokuapp.com/login/auth'
 };
 
 /*router.get('/', function(req, res, next) {
