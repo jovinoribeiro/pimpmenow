@@ -1,16 +1,13 @@
 var express = require('express');
 
-var Facebook = require('facebook-node-sdk');
+var graph = require('fbgraph'); 
 
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var facebookrouter = require('./routes/facebook.js');
+var request = require('request');
 
 var app = express();
 
@@ -26,9 +23,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/facebook', routes);
+//Setup routes
+var index = require('./routes/index');
+var users = require('./routes/users');
+//var facebookRouter = require('./routes/facebook');
+var login = require('./routes/login');
+var main = require('./routes/main');
+
+//Use My routes
+app.use('/', index);
 app.use('/users', users);
-app.use('/', facebookrouter);
+//app.use('/facebook', facebookRouter);
+app.use('/login', login);
+app.use('/main', main);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -38,7 +45,6 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -60,9 +66,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
-app.use(Facebook.middleware({ appID: '1233069123443297', secret : 'bc26345238acf7303ae7a2b575a3e87f'  }));
 
 
 
