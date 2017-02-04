@@ -1,0 +1,27 @@
+<div ng-controller='HomeCtrl as homeCtrl'>
+	<h1>Dashboard</h1>
+	<p>
+		{{ homeCtrl.userData.data.name}} 
+		<span ng-show="homeCtrl.userData.data.name">,</span>
+		{{homeCtrl.userData.data.birthday }}
+	</p>
+	<p>
+		<img src='{{ homeCtrl.userData.data.picture.data.url }}'/>
+	</p>
+
+<p>
+<h1>friends</h1>
+<div>
+ {{ homeCtrl.userData.data.data[0].name }}
+ <p>
+		<img src='{{ homeCtrl.userData.data.data[0].picture.data.url }}'/>
+	</p>
+</div>
+</p>
+
+	<p>
+		<button ng-click="homeCtrl.fetchData('me?fields=name, birthday, friends, picture.type(large)')">
+			Fetch Profile</button>
+		<button ng-click="homeCtrl.fetchData('me/friends?fields=name, picture.type(large)')">Fetch Friends</button>
+	</p>
+</div>

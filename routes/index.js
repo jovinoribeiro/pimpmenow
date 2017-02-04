@@ -3,7 +3,7 @@ var router = express.Router();
    
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	console.log('going in index GET ' + req.query.code);
+  console.log('going in index GET ' + req.query.code);
   res.render('index');
 });
 

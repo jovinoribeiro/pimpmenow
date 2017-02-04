@@ -1,17 +1,27 @@
 doctype html
-html
+html(ng-app='Pimpme')
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
     link(rel='stylesheet', media='screen', href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700')
     link(rel='stylesheet', media='screen', href='https://fonts.googleapis.com/css?family=Montserrat:400,700')
-    link(rel='stylesheet', media='screen', href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic') 
+    link(rel='stylesheet', media='screen', href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic')
+    link(rel='stylesheet', href='/src/assets/css/bootstrap-theme.css', media='screen')
+    link(rel='stylesheet', href='src/assets/css/font-awesome.min.css')   
+    link(rel='stylesheet', href='/src/assets/css/freelancer.css')
+    link(rel='stylesheet', href='/src/assets/css/main.css') 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-resource.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular-route.js')
     script(src='https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.0.js')
+    script(src='/src/assets/js/headroom.min.js')
+    script(src='/src/assets/js/jQuery.headroom.min.js')
+    script(src='/src/assets/js/template.js')
+    script(src='/src/assets/js/freelancer.min.js')
+    script(src='/javascripts/pimpme.js?r=<%= session.getId()%>')
+    script(src='/javascripts/home')
   body
     block content

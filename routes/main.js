@@ -5,67 +5,54 @@ var graph 		= require('fbgraph');
 var graph = require('fbgraph'); 
 graph.setVersion("2.8"); 
 
+//CONFIGURATION
 var conf = {
     client_id: '1233069123443297',
-    client_secret: 'bc26345238acf7303ae7a2b575a3e87f',
-    redirect_uri: 'https://pimpmenow.herokuapp.com/'
+    client_secret: 'bc26345238acf7303ae7a2b575a3e87f'
 };
 
+//ENTRY POINT - after used pressed "login in previous page"
+router.get('/', function(req, res, next) {
+  console.log('inside of main ');
+  console.log(req.query.facebookRes);
+  setupAccessToken(req.query.facebookRes);
+  
+  res.render('main');
+});
+
+//SETUP THE ACCESS TOKEN
 function setupAccessToken(accessToken) {
 
-	graph.extendAccessToken({
+	graph.extendAccessToken({ 
 	    "access_token": accessToken 
 	       , "client_id":      conf.client_id
 	      , "client_secret":  conf.client_secret
 	    }, function (err, facebookRes) {
 	       console.log('result of extending access token:');
-	       console.log(facebookRes);
 	    }); 
-
+  
 	graph.setAccessToken(accessToken);
 };
 
-router.get('/', function(req, res, next) {
-	console.log('inside of main ');
-	console.log(req.query.facebookRes);
-	setupAccessToken(req.query.facebookRes);
-	res.render('main');
-});
-
+//When fetch the ata
 router.get('/fetchdata', function(req, res, next) {
-	console.log('fetching data');
-	var welcomeMsg = serviceRequest(req, res, next);
-	//welcomeMsg = 'xuxa';
-	//res.render('main', { welcome  : welcomeMsg });
+	var fields = req.query.query;
+	var welcomeMsg = fetchData(fields, req, res, next);
 });
 
-function serviceRequest(req, res, next) {
-    console.log('Servicing the REquest');   
-var welcomeMsg = '';
-    var options = {
-        timeout:  3000
-      , pool:     { maxSockets:  Infinity }
-      , headers:  { connection:  "keep-alive" }
-    };  
-      
-       welcomeMsg = 
-       graph  
-      .setOptions(options)
-      .get("/me?fields=email, name, birthday, work", function(err, result) {
-        console.log(result); // { id: '4', name: 'Mark Zuckerberg'... }
-         /*res.send('Hello, ' + result.name + '. I will email you at ' + 
-            result.email + ' ' + result.work[0].employer.name);*/
-
-        welcomeMsg = 'Hello, ' + result.name + '. I will email you at ' + 
-            result.email + ' ' 
-            + result.work[0].employer.name;
-        
-        //return welcomeMsg;    
-            //res.render('main', { welcome  : welcomeMsg });
-            res.json(result);
-   
-      });  
-      console.log(welcomeMsg.data);
-      return welcomeMsg;
+function fetchData(query, req, res, next) {
+  var options = {
+    timeout:  3000
+    , pool:     { maxSockets:  Infinity }
+    , headers:  { connection:  "keep-alive" }
+  };  
+       
+  graph  
+  .setOptions(options)
+  .get("/" + query, function(err, result) {   
+    console.log(result);     
+    res.json(result);
+  });
 }
+
 module.exports = router;
