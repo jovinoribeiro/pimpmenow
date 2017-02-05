@@ -9,8 +9,8 @@ var request = require('request');
 
 var app = express();
 
-var BACKEND = 'http://localhost:3000';
-//var BACKEND = 'http://pimpmenow.herokuapp.com';
+//var BACKEND = 'http://localhost:3000';
+var BACKEND = 'http://pimpmenow.herokuapp.com';
 
 // this should really be in a config file!
 var conf = {

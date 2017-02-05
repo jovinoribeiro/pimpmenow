@@ -4,8 +4,8 @@ var app = angular.module('Pimpme',
 		'ngResource'
 	]);
 
-app.constant('BACKEND', 'http://localhost:3000');
-//app.constant('BACKEND', 'http://pimpmenow.herokuapp.com')
+//app.constant('BACKEND', 'http://localhost:3000');
+app.constant('BACKEND', 'http://pimpmenow.herokuapp.com')
 
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
@@ -31,7 +31,7 @@ app.controller('HomeCtrl', function($scope, $http, BACKEND) {
 			homeCtrl.userData = result.data;
 		});
 */
-		$http( {
+		$http( {  
 			url: srcUrl,
 			method: 'GET',
 			params : { query : query}
